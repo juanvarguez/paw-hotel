@@ -1,5 +1,13 @@
 version: 0.2
 
+artifacts:
+  files:
+    - '**/*'
+    - scripts/*
+    - dog-1.jpg
+  name: s3-to-s3-latest-build.zip
+  discard-paths: no
+
 phases:
   install: 
     runtime-versions:
