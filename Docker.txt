@@ -1,0 +1,25 @@
+# Install Docker Engine on EC2 Instance
+sudo amazon-linux-extras install docker
+sudo service docker start
+sudo usermod -a -G docker ec2-user
+
+LOGOUT and login
+
+# Install GIT and Download Course Repo
+sudo yum install git
+git clone https://github.com/juanvarguez/paw-hotel.git
+
+
+# Build Docker Image
+cd paw-hotel/
+docker build -t pawtel .
+docker images --filter reference=pawtel
+
+# Run Container from Image
+docker run -t -i -p 80:80 pawtel
+
+# Upload Container to Dockerhub (optional)
+docker login --username=YOUR_USER
+docker images
+docker tag IMAGEID YOUR_USER/pawtel
+docker push YOUR_USER/pawtel:latest
